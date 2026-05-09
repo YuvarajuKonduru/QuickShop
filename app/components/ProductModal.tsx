@@ -22,11 +22,11 @@ export default function ProductModal({ product, onClose, onAddToCart }: ProductM
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className="relative mx-4 w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-2xl"
+        className="relative w-full max-w-md max-h-[90dvh] overflow-y-auto rounded-t-2xl sm:rounded-2xl bg-white shadow-2xl sm:mx-4"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -40,7 +40,7 @@ export default function ProductModal({ product, onClose, onAddToCart }: ProductM
         </button>
 
         {/* Image */}
-        <div className="flex items-center justify-center bg-slate-50 p-6" style={{ height: 220 }}>
+        <div className="flex items-center justify-center bg-slate-50 p-4 sm:p-6 h-40 sm:h-[220px]">
           <Image
             src={product.thumbnail}
             alt={product.title}
@@ -52,14 +52,14 @@ export default function ProductModal({ product, onClose, onAddToCart }: ProductM
         </div>
 
         {/* Details */}
-        <div className="space-y-3 p-5">
+        <div className="space-y-3 p-4 sm:p-5">
           <p className="text-xs font-medium uppercase tracking-widest text-amber-500">
             {product.category}
           </p>
-          <h2 className="text-lg font-bold text-gray-900">{product.title}</h2>
+          <h2 className="text-base sm:text-lg font-bold text-gray-900">{product.title}</h2>
           <p className="text-sm leading-relaxed text-gray-500">{product.description}</p>
           <div className="flex items-center justify-between pt-2">
-            <span className="text-2xl font-bold text-gray-900">${product.price.toFixed(2)}</span>
+            <span className="text-xl sm:text-2xl font-bold text-gray-900">${product.price.toFixed(2)}</span>
             <button
               onClick={() => {
                 onAddToCart(product);

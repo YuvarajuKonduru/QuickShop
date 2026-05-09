@@ -77,20 +77,6 @@ export function useVoiceCommands(
       },
     },
     {
-      command: "buy :number",
-      callback: (number: string) => {
-        const { products, onAddToCart } = actionsRef.current;
-        const index = parseInt(number, 10);
-        if (!isNaN(index) && index >= 1 && index <= products.length) {
-          const product = products[index - 1];
-          setLastCommand(`Bought: "${product.title}"`);
-          onAddToCart(product);
-        } else {
-          setLastCommand(`Invalid item number: ${number}`);
-        }
-      },
-    },
-    {
       command: "clear",
       callback: () => {
         setLastCommand("Cleared search");
